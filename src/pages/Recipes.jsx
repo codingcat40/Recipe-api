@@ -19,7 +19,7 @@ const Recipes = () => {
 
   useEffect(() => {
     fetchMeals();
-  }, []);
+  }, [id]);
 
   return (
     <div className="text-center">
