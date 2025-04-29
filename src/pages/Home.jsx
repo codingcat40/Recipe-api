@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [items, setItems] = useState([]);
-  const [searchTerm, setSearchItem] = useState('')
-  const navigate = useNavigate()
+  const [searchTerm, setSearchItem] = useState("");
+  const navigate = useNavigate();
 
   async function fetchMeals() {
     const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
@@ -22,11 +22,10 @@ const Home = () => {
     fetchMeals();
   }, []);
 
-
-  const handleSearch = () =>  {
-      // <Link to={`recipeCategory/${searchTerm}`}></Link>
-    navigate(`recipeCategory/${searchTerm}`)
-  }
+  const handleSearch = () => {
+    // <Link to={`recipeCategory/${searchTerm}`}></Link>
+    navigate(`recipeCategory/${searchTerm}`);
+  };
 
   return (
     <div className="flex flex-col">
@@ -41,8 +40,9 @@ const Home = () => {
             placeholder="Have Something Else in Mind.....?"
             onChange={(event) => setSearchItem(event.target.value)}
           />
-          <button className="border-0 cursor-pointer bg-black text-white p-2 rounded-xl hover:text-black hover:shadow-2xl hover:bg-white transition-colors duration-200"
-          onClick={handleSearch}
+          <button
+            className="border-0 cursor-pointer bg-black text-white p-2 rounded-xl hover:text-black hover:shadow-2xl hover:bg-white transition-colors duration-200"
+            onClick={handleSearch}
           >
             Search
           </button>

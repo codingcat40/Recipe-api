@@ -28,7 +28,7 @@ const Recipes = () => {
       </h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         {meals.length > 0 ? meals.map((meal, index) => (
-          <Link key={index}>
+          <Link key={index} to={`${meal.idMeal}`}>
             <div className="p-3 m-2 shadow-md hover:shadow-2xl transition duration-300">
                 <img src={meal.strMealThumb} alt="" className="object-cover max-w-fit m-auto rounded-md h-52" />
                 <h3>Dish Name: {meal.strMeal}</h3>
