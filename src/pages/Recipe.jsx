@@ -2,48 +2,51 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const Recipe = () => {
   const { idMeal } = useParams();
-  const [recipe, setRecipe] = useState({})
-  
-  const fetchRecipe = async () => {
-        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
-        const data = await response.json()
-        console.log(data)
+  const [recipe, setRecipe] = useState({});
 
-  }
+  const fetchRecipe = async () => {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+    );
+    const data = await response.json();
+    console.log(data);
+    setRecipe(data.meals[0]);
+  };
 
   useEffect(() => {
-    console.log(idMeal)
-    fetchRecipe()
-  }, [idMeal])
+    console.log(idMeal);
+    fetchRecipe();
+  }, [idMeal]);
 
 
-  return(
-    <div className="bg-white shadow-lg rounded-2xl p-6 m-4 space-y-4 max-w-2xl mx-auto">
-  {/* <h2 className="text-2xl font-bold text-gray-800">Delicious Recipes</h2>
+  return (
+    <div className=" shadow-lg rounded-2xl p-6 m-4 space-y-4 max-w-2xl mx-auto">
+      {/* {recipe.map((item) => (
+        <div key={item.idMeal}>
+          <img src={item.strMealThumb} alt="" />
+          <h1>
+            <span className="font-bold text-2xl">Dish Name:</span>{" "}
+            {item.strMeal}
+          </h1>
+          <h2>
+            <span className="font-bold text-xl">Dish Area:</span> {item.strArea}
+          </h2>
 
-  <div className="grid gap-4 md:grid-cols-2">
-    <div className="p-4 border rounded-lg hover:shadow-md transition">
-      <h3 className="text-lg font-semibold text-indigo-600">Spaghetti Carbonara</h3>
-      <p className="text-sm text-gray-600">Classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+          <p>
+            {" "}
+            <span className="font-bold text-xl">Dish Category:</span> {item.strCategory}
+          </p>
+
+          <h2 className="font-bold text-2xl font-serif">Ingredients:</h2>
+          <ol>
+            {
+              
+            }
+          </ol>
+        </div>
+      ))} */}
     </div>
-
-    <div className="p-4 border rounded-lg hover:shadow-md transition">
-      <h3 className="text-lg font-semibold text-indigo-600">Butter Chicken</h3>
-      <p className="text-sm text-gray-600">Creamy, rich curry made with tender chicken and aromatic spices.</p>
-    </div>
-
-    <div className="p-4 border rounded-lg hover:shadow-md transition">
-      <h3 className="text-lg font-semibold text-indigo-600">Pad Thai</h3>
-      <p className="text-sm text-gray-600">Famous Thai stir-fried noodles with tamarind sauce and peanuts.</p>
-    </div>
-
-    <div className="p-4 border rounded-lg hover:shadow-md transition">
-      <h3 className="text-lg font-semibold text-indigo-600">Tacos al Pastor</h3>
-      <p className="text-sm text-gray-600">Marinated pork tacos topped with pineapple and fresh cilantro.</p>
-    </div>
-  </div> */}
-</div>
-  )
+  );
 };
 
 export default Recipe;
